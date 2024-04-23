@@ -40,7 +40,7 @@ function StoryBook() {
           <div className="bg-white rounded-lg w-full mx-5 card-shadow border-2 border-gray-300 select-none relative flex justify-center ">
             <img
               alt="download"
-              src="src\assets\save-icon.png"
+              src="public\save-icon.png"
               className="absolute top-3 right-4 w-10 h-10 cursor-pointer"
               onClick={() => {
                 // download current image
