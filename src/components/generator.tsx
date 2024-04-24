@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
+import API_URL from "../constants/global";
 
 function Generator() {
   const [promptText, setPromptText] = useState("");
@@ -10,8 +11,9 @@ function Generator() {
 
   function sendUserPrompt() {
     return axios
-      .post("http://127.0.0.1:8000/user-prompt", { text: promptText })
+      .get(`${API_URL}/user-prompt/?prompt=${promptText}`)
       .then((response) => {
+        console.log(response);
         console.log(response.status, response.data.token);
       })
       .catch((error) => {
@@ -21,8 +23,9 @@ function Generator() {
 
   function getStory() {
     return axios
-      .get("http://127.0.0.1:8000/story")
+      .get(`${API_URL}/story`)
       .then((response) => {
+        console.log(response);
         return response.data.text;
       })
       .catch((error) => {
@@ -60,6 +63,7 @@ function Generator() {
               sendUserPrompt().then(() =>
                 getStory()
                   .then((res) => {
+                    console.log(res);
                     navigate("/reader", { state: { text: res } });
                   })
                   .catch((error) => {

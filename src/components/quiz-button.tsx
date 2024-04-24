@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../constants/global";
 
 interface Props {
   progress: any;
@@ -15,7 +16,7 @@ function QuizButton(props: Props) {
 
   function getImages() {
     return axios
-      .get("http://127.0.0.1:8000/SD-images")
+      .get(`${API_URL}/SD-images`)
       .then((response) => {
         console.log(response.data);
         return response.data;

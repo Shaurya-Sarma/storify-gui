@@ -2,6 +2,7 @@ import { useState } from "react";
 import Navbar from "./navbar";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
+import API_URL from "../constants/global";
 
 function Reader() {
   const [textSize, setTextSize] = useState(30);
@@ -12,7 +13,7 @@ function Reader() {
 
   function getQuestionBank() {
     return axios
-      .get("http://127.0.0.1:8000/quiz-questions")
+      .get(`${API_URL}/quiz-questions`)
       .then((response) => {
         return response.data.questions;
       })
